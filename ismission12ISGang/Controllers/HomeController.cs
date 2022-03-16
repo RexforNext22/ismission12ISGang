@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Author Ryan Pinkney, Tanner Davis, Kevin Gutierrez, Jacob Poor
+// This is our controller for the home pages
+
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -23,7 +26,13 @@ namespace ismission12ISGang.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult SignUp()
+        {
+            return View();
+        }
+
+
+        public IActionResult Appointments()
         {
             return View();
         }
