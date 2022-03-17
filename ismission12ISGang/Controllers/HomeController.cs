@@ -60,8 +60,13 @@ namespace ismission12ISGang.Controllers
 
         // call the form
         [HttpGet]
-        public IActionResult Form()
+        public IActionResult Form(int id)
         {
+            // Set the page
+            ViewBag.singleTime = DbContext.times
+            .Single(x => x.TimeID == id);
+
+
             return View();
         }
 
@@ -72,8 +77,22 @@ namespace ismission12ISGang.Controllers
             // throw errors if invalid entries made
             if (ModelState.IsValid)
             {
+
+
                 DbContext.Add(p);
                 DbContext.SaveChanges();
+
+
+                //Time result = (from t in DbContext.times
+                //                 where t.TimeID == id
+                //               select t).SingleOrDefault();
+
+                //result.bReserved = true;
+
+                //DbContext.SaveChanges();
+
+
+
                 return View("Appointments", p);
             }
             else

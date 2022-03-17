@@ -33,7 +33,7 @@ namespace ismission12ISGang.Models
                     Year = 2022,
                     TimeOfDay = "8:00",
                     PersonID = 1,
-                    bReserved = false
+                    bReserved = true
 
 
                 },

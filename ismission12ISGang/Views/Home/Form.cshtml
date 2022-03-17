@@ -4,9 +4,16 @@
 @{
 }
 
+@using (Html.BeginForm("ReceiveWithRequestFormData", "ControllerAndAction"))
+
 @model Person
 
-<h2>Reserve a time slot</h2>
+
+<h2>Reserve your time slot:</h2>
+
+
+@*<h5>@ViewBag.singleTime.Month @ViewBag.singleTime.Day, @ViewBag.singleTime.Year @ViewBag.singleTime.TimeOfDay</h5>*@
+
 
 <form method="post">
     <!-- Throw error message if invalid entries made -->
@@ -26,6 +33,9 @@
 
         <label asp-for="Phone">Phone</label>
         <input asp-for="Phone" class="form-control" />
+
+        <!--Hidden field to make the time reserved-->
+        @*<input type="hidden" asp-for="@model Time.bReserved" value="True" />*@
 
     </div>
 

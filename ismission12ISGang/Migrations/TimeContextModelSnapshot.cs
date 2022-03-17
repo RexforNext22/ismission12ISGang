@@ -92,7 +92,7 @@ namespace ismission12ISGang.Migrations
                             PersonID = 1,
                             TimeOfDay = "8:00",
                             Year = 2022,
-                            bReserved = false
+                            bReserved = true
                         },
                         new
                         {

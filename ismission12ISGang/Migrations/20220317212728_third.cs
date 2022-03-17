@@ -59,7 +59,7 @@ namespace ismission12ISGang.Migrations
             migrationBuilder.InsertData(
                 table: "times",
                 columns: new[] { "TimeID", "Day", "Month", "PersonID", "TimeOfDay", "Year", "bReserved" },
-                values: new object[] { 1, 12, "March", 1, "8:00", 2022, false });
+                values: new object[] { 1, 12, "March", 1, "8:00", 2022, true });
 
             migrationBuilder.CreateIndex(
                 name: "IX_times_PersonID",
