@@ -13,7 +13,7 @@ namespace ismission12ISGang.Models
         public string Month { get; set; }
 
         [Required]
-        public string Day { get; set; }
+        public int Day { get; set; }
 
         [Required]
         public int Year { get; set; }
