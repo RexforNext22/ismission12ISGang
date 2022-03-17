@@ -37,6 +37,13 @@ namespace ismission12ISGang.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult Form()
+        {
+            return View();
+        }
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
