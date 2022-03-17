@@ -14,11 +14,12 @@ namespace ismission12ISGang.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private TimeContext DbContext { get; set; }
+
+        public HomeController(TimeContext TimeReserve)
         {
-            _logger = logger;
+            DbContext = TimeReserve;
         }
 
         public IActionResult Index()
@@ -37,17 +38,28 @@ namespace ismission12ISGang.Controllers
             return View();
         }
 
+        // call the form
         [HttpGet]
         public IActionResult Form()
         {
             return View();
         }
 
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        // submit the form
+        [HttpPost]
+        public IActionResult Form(Person p)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            // throw errors if invalid entries made
+            if (ModelState.IsValid)
+            {
+                DbContext.Add(p);
+                DbContext.SaveChanges();
+                return View("Appointments", p);
+            }
+            else
+            {
+                return View(p);
+            }
         }
     }
 }
