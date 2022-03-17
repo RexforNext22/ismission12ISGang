@@ -5,6 +5,7 @@ namespace ismission12ISGang.Models
 {
     public class Person
     {
+        // set up Person model in the database
         [Key]
         [Required]
         public int PersonID { get; set; }

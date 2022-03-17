@@ -4,4 +4,32 @@
 @{
 }
 
-<h2>This is the form to claim a time spot</h2>
+@model Person
+
+<h2>Reserve a time slot</h2>
+
+<form method="post">
+    <!-- Throw error message if invalid entries made -->
+    <div asp-validation-summary="All"></div>
+
+    <!-- Basic form -->
+    <div class="form-group">
+
+        <label asp-for="Name">Name</label>
+        <input asp-for="Name" class="form-control" />
+
+        <label asp-for="Size">Group Size (enter as a number)</label>
+        <input asp-for="Size" class="form-control" />
+
+        <label asp-for="Email">Email</label>
+        <input asp-for="Email" class="form-control" />
+
+        <label asp-for="Phone">Phone</label>
+        <input asp-for="Phone" class="form-control" />
+
+    </div>
+
+    <!-- submission button -->
+    <button type="submit" class="btn btn-sm btn-primary">Save Reservation</button>
+
+</form>
