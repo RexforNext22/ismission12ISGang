@@ -9,27 +9,47 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ismission12ISGang.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace ismission12ISGang.Controllers
 {
     public class HomeController : Controller
     {
 
+
+        private readonly ILogger<HomeController> _logger;
+
+
+        // Database configurations
         private TimeContext DbContext { get; set; }
 
-        public HomeController(TimeContext TimeReserve)
+
+        // Database configurations
+        public HomeController(ILogger<HomeController> logger, TimeContext someName)
         {
-            DbContext = TimeReserve;
+            _logger = logger;
+            DbContext = someName;
         }
 
+
+        // Index route
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
         }
 
+        // Sign up route
+        [HttpGet]
         public IActionResult SignUp()
         {
-            return View();
+            // Pull a list of all times from the database using tolist()
+            var lstDataList = DbContext.times
+                .Include(x => x.Person)
+                .ToList();
+
+            // Return the list to the screen
+            return View(lstDataList);
         }
 
 
