@@ -22,10 +22,13 @@ namespace ismission12ISGang.Models
         [Required]
         public string TimeOfDay { get; set; }
 
-        [Required]
+
         //[ForeignKey("Person")]
-        public int PersonID { get; set; }
+        public int? PersonID { get; set; }
         public Person Person { get; set; }
+
+        [Required]
+        public bool bReserved { get; set; }
 
     }
 }

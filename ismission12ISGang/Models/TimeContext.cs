@@ -23,7 +23,7 @@ namespace ismission12ISGang.Models
         {
 
             // Seed the values for the Category table when we build the database
-            mb.Entity<Time>().HasData(
+            _ = mb.Entity<Time>().HasData(
 
                 new Time
                 {
@@ -33,7 +33,19 @@ namespace ismission12ISGang.Models
                     Year = 2022,
                     TimeOfDay = "8:00",
                     PersonID = 1,
-                    
+                    bReserved = false
+
+
+                },
+                new Time
+                {
+                    TimeID = 2,
+                    Month = "March",
+                    Day = 12,
+                    Year = 2022,
+                    TimeOfDay = "8:30",
+                    bReserved = false
+
 
                 });
             mb.Entity<Person>().HasData(

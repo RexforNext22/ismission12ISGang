@@ -32,7 +32,8 @@ namespace ismission12ISGang.Migrations
                     Day = table.Column<int>(nullable: false),
                     Year = table.Column<int>(nullable: false),
                     TimeOfDay = table.Column<string>(nullable: false),
-                    PersonID = table.Column<int>(nullable: false)
+                    PersonID = table.Column<int>(nullable: true),
+                    bReserved = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -42,7 +43,7 @@ namespace ismission12ISGang.Migrations
                         column: x => x.PersonID,
                         principalTable: "persons",
                         principalColumn: "PersonID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.InsertData(
@@ -52,8 +53,13 @@ namespace ismission12ISGang.Migrations
 
             migrationBuilder.InsertData(
                 table: "times",
-                columns: new[] { "TimeID", "Day", "Month", "PersonID", "TimeOfDay", "Year" },
-                values: new object[] { 1, 12, "March", 1, "8:00", 2022 });
+                columns: new[] { "TimeID", "Day", "Month", "PersonID", "TimeOfDay", "Year", "bReserved" },
+                values: new object[] { 2, 12, "March", null, "8:30", 2022, false });
+
+            migrationBuilder.InsertData(
+                table: "times",
+                columns: new[] { "TimeID", "Day", "Month", "PersonID", "TimeOfDay", "Year", "bReserved" },
+                values: new object[] { 1, 12, "March", 1, "8:00", 2022, false });
 
             migrationBuilder.CreateIndex(
                 name: "IX_times_PersonID",
