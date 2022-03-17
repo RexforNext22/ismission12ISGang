@@ -1,4 +1,8 @@
-﻿@*
+﻿<!-- Author IS GANG
+    This is where the user can see the time slots and pick one to reserve
+    -->
+
+@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
@@ -6,3 +10,49 @@
 
 
 <h2 class="text-center">Here are the avaliable times</h2>
+
+
+<!--Retrieves the list from the controller-->
+@model List<Time>
+<!--Table to show all the applicants-->
+<!--Display to display the records formatted with Bootstrap-->
+<table class="table table-bordered table-striped">
+
+    <thread class="font-weight-bold">
+
+        <!--Columns-->
+        <tr>
+            <td>Month:</td>
+            <td>Day:</td>
+            <td>Year:</td>
+            <td>Time:</td>
+
+        </tr>
+
+    </thread>
+
+    <tbody>
+
+        <!--Rows-->
+        @foreach (var iCount in Model)
+        {<!-- Model needs to be capitalized-->
+
+            <tr>
+
+                <td>@iCount.Month</td>
+                <td>@iCount.Day</td>
+                <td>@iCount.Year</td>
+                <td>@iCount.TimeOfDay</td>
+   
+                <!--Buttons to delete and edit that pass the id as a parameter in the url-->
+                <td><a asp-controller="Home" asp-action="Edit" asp-route-id="@iCount.TimeID">Reserve</a></td>
+            </tr>
+
+        }
+
+
+
+    </tbody>
+
+
+</table>
