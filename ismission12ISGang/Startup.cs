@@ -55,6 +55,14 @@ namespace ismission12ISGang
 
             app.UseEndpoints(endpoints =>
             {
+
+                // This one first
+                endpoints.MapControllerRoute(
+                    name: "id",
+                    pattern: "{id}",
+                    defaults: new { Controller = "Home", action = "Form" });
+
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

@@ -72,7 +72,7 @@ namespace ismission12ISGang.Controllers
 
         // submit the form
         [HttpPost]
-        public IActionResult Form(Person p)
+        public IActionResult Form(Person p, int id)
         {
             // throw errors if invalid entries made
             if (ModelState.IsValid)
@@ -83,13 +83,18 @@ namespace ismission12ISGang.Controllers
                 DbContext.SaveChanges();
 
 
-                //Time result = (from t in DbContext.times
-                //                 where t.TimeID == id
-                //               select t).SingleOrDefault();
+                var oSingleRecordPerson = DbContext.persons
+                        .Single(x => x.Name == p.Name);
 
-                //result.bReserved = true;
 
-                //DbContext.SaveChanges();
+
+                var oSingleRecord = DbContext.times
+                        .Single(x => x.TimeID == id);
+
+                oSingleRecord.PersonID = oSingleRecordPerson.PersonID;
+                oSingleRecord.bReserved = true;
+
+                DbContext.SaveChanges();
 
 
 

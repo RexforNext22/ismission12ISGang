@@ -9,7 +9,7 @@ using ismission12ISGang.Models;
 namespace ismission12ISGang.Migrations
 {
     [DbContext(typeof(TimeContext))]
-    [Migration("20220317212728_third")]
+    [Migration("20220317223841_third")]
     partial class third
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
