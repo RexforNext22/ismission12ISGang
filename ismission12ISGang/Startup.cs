@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ismission12ISGang.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,6 +26,11 @@ namespace ismission12ISGang
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            // Add this to connect the database sqlite
+            services.AddDbContext<TimeContext>(options =>
+            {
+                options.UseSqlite(Configuration["ConnectionString:RPConnection"]);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
