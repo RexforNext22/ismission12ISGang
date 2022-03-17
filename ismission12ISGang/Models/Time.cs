@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ismission12ISGang.Models
 {
@@ -20,6 +21,11 @@ namespace ismission12ISGang.Models
 
         [Required]
         public string TimeOfDay { get; set; }
+
+        [Required]
+        //[ForeignKey("Person")]
+        public int PersonID { get; set; }
+        public Person Person { get; set; }
 
     }
 }

@@ -12,10 +12,10 @@ namespace ismission12ISGang.Models
 
         }
 
-        public DbSet<Time> responses { get; set; }
+        public DbSet<Time> times { get; set; }
 
         // Second line for the next table
-        //public DbSet<Category> categories { get; set; }
+        public DbSet<Person> persons { get; set; }
 
 
 
@@ -27,13 +27,26 @@ namespace ismission12ISGang.Models
 
                 new Time
                 {
+                    TimeID = 1,
                     Month = "March",
                     Day = 12,
                     Year = 2022,
-                    TimeOfDay = "8:00"
+                    TimeOfDay = "8:00",
+                    PersonID = 1,
+                    
 
                 });
-            ;
+            mb.Entity<Person>().HasData(
+
+                new Person
+                {
+                    PersonID = 1,
+                    Name = "Jacob Poor",
+                    Size = 4,
+                    Email = "test@test.com",
+                    Phone = "800 867 5309"
+
+                });
         }
     }
 }

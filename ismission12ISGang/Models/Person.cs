@@ -10,10 +10,6 @@ namespace ismission12ISGang.Models
         public int PersonID { get; set; }
 
         [Required]
-        public int TimeID { get; set; }
-        public Time Time { get; set; }
-
-        [Required]
         public string Name { get; set; }
 
         [Required]
