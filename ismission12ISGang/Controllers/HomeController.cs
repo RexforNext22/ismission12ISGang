@@ -16,7 +16,7 @@ namespace ismission12ISGang.Controllers
     public class HomeController : Controller
     {
 
-
+        // Configure the Home controller
         private readonly ILogger<HomeController> _logger;
 
 
@@ -52,13 +52,13 @@ namespace ismission12ISGang.Controllers
             return View(lstDataList);
         }
 
-
+        // Route to see the appointments view
         public IActionResult Appointments()
         {
             return View();
         }
 
-        // call the form
+        // Route to see the form
         [HttpGet]
         public IActionResult Form(int id)
         {
@@ -78,32 +78,42 @@ namespace ismission12ISGang.Controllers
             if (ModelState.IsValid)
             {
 
-
+                // Submit the new person to the database
                 DbContext.Add(p);
                 DbContext.SaveChanges();
 
-
+                // Query the record of the person that was just added
                 var oSingleRecordPerson = DbContext.persons
                         .Single(x => x.Name == p.Name);
 
 
-
+                // Query the record for the time slot
                 var oSingleRecord = DbContext.times
                         .Single(x => x.TimeID == id);
 
+                // Set the person id of the time slot record to the same person id of the person just added
                 oSingleRecord.PersonID = oSingleRecordPerson.PersonID;
+
+                // Change the reservation status to true
                 oSingleRecord.bReserved = true;
 
+                // Save changes back to the database
                 DbContext.SaveChanges();
 
 
-
+                // Return the user to the homepage per the assignment instructions
                 return View("Index", p);
             }
             else
             {
+                // Return the same view if there is an error
                 return View(p);
             }
         }
+
+
+        // Add addition functions here:
+
+
     }
 }

@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Author Ryan Pinkney, Tanner Davis, Kevin Gutierrez, Jacob Poor
+// This is our dbcontext file for our database
+
+using System;
 using Microsoft.EntityFrameworkCore;
 
 namespace ismission12ISGang.Models

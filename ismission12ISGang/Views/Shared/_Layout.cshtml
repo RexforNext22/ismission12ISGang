@@ -1,14 +1,26 @@
-﻿<!DOCTYPE html>
+﻿<!-- Author IS GANG
+    This is the shared layout page. Most of the code is from the default, but we did modify some of the styling
+    and the navigation bar.
+    -->
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Set the variable for the tab title-->
     <title>@ViewData["Title"]</title>
+
+    <!-- Import the css styling-->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body style="background-color: rgb(189, 193, 201); opacity: 0.8; ">
     <header>
+
+        <!-- New navigation bar -->
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-dark border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
@@ -29,11 +41,15 @@
             </div>
         </nav>
     </header>
+
+    <!-- Insert the content of each page-->
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
+
+    <!-- Import the JS libraries-->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
