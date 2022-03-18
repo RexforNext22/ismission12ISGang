@@ -2,14 +2,32 @@
     This is where the user can see the time slots and pick one to reserve
     -->
 
+
+@using System.Globalization;
+
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    // Set the date time to a variable
+    System.DateTime date1 = DateTime.Now;
+
+    // Convert the month name to an integer
+    static int GetMonthNumber_From_MonthName(string monthname)
+    {
+        int monthNumber = 0;
+        monthNumber = DateTime.ParseExact(monthname, "MMMM", CultureInfo.CurrentCulture).Month;
+        return monthNumber;
+    }
+
+
+    
+
 }
 
 
-<h2 class="text-center">Here are the avaliable times:</h2><br />
+<h2 class="text-center">Here are the avaliable times:</h2>
+<br />
 
 
 <!--Retrieves the list from the controller-->
@@ -36,26 +54,37 @@
         <!--Rows-->
         @foreach (var iCount in Model)
         {<!-- Model needs to be capitalized-->
-            if (@iCount.bReserved == false)
+            @if (@iCount.bReserved == false)
             {
+                <!--Convert the data to datetime format--> <!--Change the time to allow or deny same day reservations-->
+                DateTime date2 = new DateTime(@iCount.Year, GetMonthNumber_From_MonthName(@iCount.Month), @iCount.Day, 1, 0, 0);
 
-            
-            <tr>
+                <!--Compare the two dates-->
+                @if ((DateTime.Compare(date1, date2) < 0))
+                {
 
-                <td>@iCount.Month</td>
-                <td>@iCount.Day</td>
-                <td>@iCount.Year</td>
-                <td>@iCount.TimeOfDay</td>
+                <tr>
 
-                <!--Buttons to delete and edit that pass the id as a parameter in the url-->
-                <td><a class="btn btn-success" asp-controller="Home" asp-action="Form" asp-route-id="@iCount.TimeID">Reserve</a></td>
-            </tr>
+                    <td>@iCount.Month</td>
+                    <td>@iCount.Day</td>
+                    <td>@iCount.Year</td>
+                    <td>@iCount.TimeOfDay</td>
 
+                    <!--Buttons to delete and edit that pass the id as a parameter in the url-->
+                    <td><a class="btn btn-success" asp-controller="Home" asp-action="Form" asp-route-id="@iCount.TimeID">Reserve</a></td>
+                </tr>
+
+                    
+                }
+            }
         }
-        }
+
 
 
     </tbody>
 
 
 </table>
+
+<!--Footer message-->
+<h5>We unfortunately cannot accept any same day reservations. We apologize for the inconvenience and hope you can plan a day to be visit us.</h5>

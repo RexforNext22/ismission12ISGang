@@ -9,8 +9,8 @@ using ismission12ISGang.Models;
 namespace ismission12ISGang.Migrations
 {
     [DbContext(typeof(TimeContext))]
-    [Migration("20220317223841_third")]
-    partial class third
+    [Migration("20220318161134_first")]
+    partial class first
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -102,6 +102,42 @@ namespace ismission12ISGang.Migrations
                             Day = 12,
                             Month = "March",
                             TimeOfDay = "8:30",
+                            Year = 2022,
+                            bReserved = false
+                        },
+                        new
+                        {
+                            TimeID = 3,
+                            Day = 18,
+                            Month = "March",
+                            TimeOfDay = "8:00",
+                            Year = 2022,
+                            bReserved = false
+                        },
+                        new
+                        {
+                            TimeID = 4,
+                            Day = 1,
+                            Month = "April",
+                            TimeOfDay = "8:00",
+                            Year = 2022,
+                            bReserved = false
+                        },
+                        new
+                        {
+                            TimeID = 5,
+                            Day = 1,
+                            Month = "April",
+                            TimeOfDay = "8:30",
+                            Year = 2022,
+                            bReserved = false
+                        },
+                        new
+                        {
+                            TimeID = 6,
+                            Day = 1,
+                            Month = "April",
+                            TimeOfDay = "9:00",
                             Year = 2022,
                             bReserved = false
                         });

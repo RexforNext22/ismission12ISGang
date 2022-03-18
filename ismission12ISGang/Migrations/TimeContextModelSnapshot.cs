@@ -102,6 +102,42 @@ namespace ismission12ISGang.Migrations
                             TimeOfDay = "8:30",
                             Year = 2022,
                             bReserved = false
+                        },
+                        new
+                        {
+                            TimeID = 3,
+                            Day = 18,
+                            Month = "March",
+                            TimeOfDay = "8:00",
+                            Year = 2022,
+                            bReserved = false
+                        },
+                        new
+                        {
+                            TimeID = 4,
+                            Day = 1,
+                            Month = "April",
+                            TimeOfDay = "8:00",
+                            Year = 2022,
+                            bReserved = false
+                        },
+                        new
+                        {
+                            TimeID = 5,
+                            Day = 1,
+                            Month = "April",
+                            TimeOfDay = "8:30",
+                            Year = 2022,
+                            bReserved = false
+                        },
+                        new
+                        {
+                            TimeID = 6,
+                            Day = 1,
+                            Month = "April",
+                            TimeOfDay = "9:00",
+                            Year = 2022,
+                            bReserved = false
                         });
                 });
 

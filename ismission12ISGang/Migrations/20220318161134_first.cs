@@ -2,7 +2,7 @@
 
 namespace ismission12ISGang.Migrations
 {
-    public partial class third : Migration
+    public partial class first : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -55,6 +55,26 @@ namespace ismission12ISGang.Migrations
                 table: "times",
                 columns: new[] { "TimeID", "Day", "Month", "PersonID", "TimeOfDay", "Year", "bReserved" },
                 values: new object[] { 2, 12, "March", null, "8:30", 2022, false });
+
+            migrationBuilder.InsertData(
+                table: "times",
+                columns: new[] { "TimeID", "Day", "Month", "PersonID", "TimeOfDay", "Year", "bReserved" },
+                values: new object[] { 3, 18, "March", null, "8:00", 2022, false });
+
+            migrationBuilder.InsertData(
+                table: "times",
+                columns: new[] { "TimeID", "Day", "Month", "PersonID", "TimeOfDay", "Year", "bReserved" },
+                values: new object[] { 4, 1, "April", null, "8:00", 2022, false });
+
+            migrationBuilder.InsertData(
+                table: "times",
+                columns: new[] { "TimeID", "Day", "Month", "PersonID", "TimeOfDay", "Year", "bReserved" },
+                values: new object[] { 5, 1, "April", null, "8:30", 2022, false });
+
+            migrationBuilder.InsertData(
+                table: "times",
+                columns: new[] { "TimeID", "Day", "Month", "PersonID", "TimeOfDay", "Year", "bReserved" },
+                values: new object[] { 6, 1, "April", null, "9:00", 2022, false });
 
             migrationBuilder.InsertData(
                 table: "times",
