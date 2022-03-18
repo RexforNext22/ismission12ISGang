@@ -98,7 +98,7 @@ namespace ismission12ISGang.Controllers
 
 
 
-                return View("Appointments", p);
+                return View("Index", p);
             }
             else
             {
