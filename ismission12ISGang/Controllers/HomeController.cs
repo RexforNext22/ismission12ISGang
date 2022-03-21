@@ -114,6 +114,51 @@ namespace ismission12ISGang.Controllers
 
         // Add addition functions here:
 
+        // Get method for the edit
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            ViewBag.persons = DbContext.persons.ToList();
+
+            var application = DbContext.persons.Single(x => x.PersonID == id);
+
+            return View(application);
+        }
+
+
+        // Post method for the edit
+
+        [HttpPost]
+        public IActionResult Edit(Person Inst)
+        {
+
+            DbContext.Update(Inst);
+            DbContext.SaveChanges();
+
+            return RedirectToAction("Form");
+
+        }
+
+        // Get method for the delete
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var appointments = DbContext.persons.Single(x => x.PersonID == id);
+            return View(appointments);
+        }
+
+        // Post method for the delete
+        [HttpPost]
+        public IActionResult Delete(Person ar)
+        {
+            DbContext.persons.Remove(ar);
+            DbContext.SaveChanges();
+
+            return RedirectToAction("Appointments");
+        }
+
+
+
 
     }
-}
