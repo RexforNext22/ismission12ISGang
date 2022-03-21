@@ -13,3 +13,100 @@
 
 <!-- Page Title -->
 <h2 class="text-center">All Appointments</h2>
+@using System.Globalization;
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    // Set the tab title
+    ViewData["Title"] = "Sign Up";
+
+    // Set the date time to a variable
+    System.DateTime date1 = DateTime.Now;
+
+    // Gets the year from the datetime
+    int year = date1.Year;
+
+    // Gets the month from the datetime
+    int month = date1.Month;
+
+    // Gets the day from the datetime
+    int day = date1.Day;
+
+
+
+    // Convert the month name to an integer
+    static int GetMonthNumber_From_MonthName(string monthname)
+    {
+        int monthNumber = 0;
+        monthNumber = DateTime.ParseExact(monthname, "MMMM", CultureInfo.CurrentCulture).Month;
+        return monthNumber;
+    }
+
+
+
+
+}
+
+
+<h2 class="text-center">Here are the avaliable times:</h2>
+<br />
+
+
+<!--Retrieves the list from the controller-->
+@model List<Time>
+<!--Table to show all the applicants-->
+<!--Display to display the records formatted with Bootstrap-->
+<table class="table table-bordered table-striped">
+
+    <thread class="font-weight-bold">
+
+        <!--Columns-->
+        <tr class="font-weight-bold">
+            <td>Month:</td>
+            <td>Day:</td>
+            <td>Year:</td>
+            <td>Time:</td>
+
+        </tr>
+
+    </thread>
+
+    <tbody>
+
+        <!--Rows-->
+        @foreach (var iCount in Model)
+        {<!-- Model needs to be capitalized-->
+            @if (@iCount.bReserved == true)
+            {
+                <!--Convert the data to datetime format--> <!--Change the time to allow or deny same day reservations-->
+                DateTime date2 = new DateTime(@iCount.Year, GetMonthNumber_From_MonthName(@iCount.Month), @iCount.Day, 1, 0, 0);
+
+                <!--Compare the two dates-->
+                @if ((DateTime.Compare(date1, date2) < 0))
+                {
+
+        <tr>
+
+            <td>@iCount.Month</td>
+            <td>@iCount.Day</td>
+            <td>@iCount.Year</td>
+            <td>@iCount.TimeOfDay</td>
+
+            <!--Buttons to delete and edit that pass the id as a parameter in the url-->
+            <td><a class="btn btn-success" asp-controller="Home" asp-action="Edit" asp-route-id="@iCount.TimeID">Edit</a></td>
+            <td><a class="btn btn-success" asp-controller="Home" asp-action="Delete" asp-route-id="@iCount.TimeID">Delete</a></td>
+        </tr>
+
+
+                }
+            }
+        }
+
+
+
+    </tbody>
+
+
+</table>

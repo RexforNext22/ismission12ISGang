@@ -55,7 +55,13 @@ namespace ismission12ISGang.Controllers
         // Route to see the appointments view
         public IActionResult Appointments()
         {
-            return View();
+            // Pull a list of all times from the database using tolist()
+            var lstDataList = DbContext.times
+                .Include(x => x.Person)
+                .ToList();
+
+            // Return the list to the screen
+            return View(lstDataList);
         }
 
         // Route to see the form
