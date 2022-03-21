@@ -11,16 +11,13 @@
 
 }
 
-<!-- Page Title -->
-<h2 class="text-center">All Appointments</h2>
+
 @using System.Globalization;
 
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-    // Set the tab title
-    ViewData["Title"] = "Sign Up";
 
     // Set the date time to a variable
     System.DateTime date1 = DateTime.Now;
@@ -50,7 +47,7 @@
 }
 
 
-<h2 class="text-center">Here are the avaliable times:</h2>
+<h2 class="text-center">Booked times:</h2>
 <br />
 
 
@@ -68,6 +65,7 @@
             <td>Day:</td>
             <td>Year:</td>
             <td>Time:</td>
+            <td>Name:</td>
 
         </tr>
 
@@ -93,6 +91,7 @@
             <td>@iCount.Day</td>
             <td>@iCount.Year</td>
             <td>@iCount.TimeOfDay</td>
+            <td>@iCount.Person.Name</td>
 
             <!--Buttons to delete and edit that pass the id as a parameter in the url-->
             <td><a class="btn btn-success" asp-controller="Home" asp-action="Edit" asp-route-id="@iCount.PersonID">Edit</a></td>
