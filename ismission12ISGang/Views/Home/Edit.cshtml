@@ -1,18 +1,11 @@
-﻿<!-- Author IS GANG
-    This is wthe home page for our reservation website
-    -->
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
     // Set the tab title
-    ViewData["Title"] = "Sign Up Form";
+    ViewData["Title"] = "Edit Form";
 
 }
 
 <!--Link the model for this page-->
 @model Person
-
 <!-- Page Title-->
 <h2>Reserve your time slot:</h2>
 
@@ -30,16 +23,16 @@
         <input type="hidden" asp-for="PersonID" />
 
         @*<label>Month:</label>
-        <input disabled="disabled" type="text" class="form-control" value="@ViewBag.singleTime.Month" />
+            <input disabled="disabled" type="text" class="form-control" value="@ViewBag.singleTime.Month" />
 
-        <label>Day:</label>
-        <input disabled="disabled" type="text" class="form-control" value="@ViewBag.singleTime.Day" />
+            <label>Day:</label>
+            <input disabled="disabled" type="text" class="form-control" value="@ViewBag.singleTime.Day" />
 
-        <label>Year:</label>
-        <input disabled="disabled" type="text" class="form-control" value="@ViewBag.singleTime.Year" />
+            <label>Year:</label>
+            <input disabled="disabled" type="text" class="form-control" value="@ViewBag.singleTime.Year" />
 
-        <label>Time:</label>
-        <input disabled="disabled" type="text" class="form-control" value="@ViewBag.singleTime.TimeOfDay" />*@
+            <label>Time:</label>
+            <input disabled="disabled" type="text" class="form-control" value="@ViewBag.singleTime.TimeOfDay" />*@
 
         <label asp-for="Name">Name</label>
         <input asp-for="Name" class="form-control" />
