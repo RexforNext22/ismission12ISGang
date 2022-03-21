@@ -129,7 +129,7 @@ namespace ismission12ISGang.Controllers
 
             var application = DbContext.persons.Single(x => x.PersonID == id);
 
-            return View(application);
+            return RedirectToAction("Form", application);
         }
 
 
