@@ -90,7 +90,7 @@ namespace ismission12ISGang.Controllers
 
                 // Query the record of the person that was just added
                 var oSingleRecordPerson = DbContext.persons
-                        .Single(x => x.Name == p.Name);
+                        .Single(x => x.PersonID == p.PersonID);
 
 
                 // Query the record for the time slot

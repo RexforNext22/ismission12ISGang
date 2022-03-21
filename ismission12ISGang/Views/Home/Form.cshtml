@@ -29,6 +29,18 @@
         <!--Hidden field for the personid-->
         <input type="hidden" asp-for="PersonID" />
 
+        <label>Month:</label>
+        <input disabled="disabled" type="text" class="form-control" value="@ViewBag.singleTime.Month" />
+
+        <label>Day:</label>
+        <input disabled="disabled" type="text" class="form-control" value="@ViewBag.singleTime.Day" />
+
+        <label>Year:</label>
+        <input disabled="disabled" type="text" class="form-control" value="@ViewBag.singleTime.Year" />
+
+        <label>Time:</label>
+        <input disabled="disabled" type="text" class="form-control" value="@ViewBag.singleTime.TimeOfDay" />
+
         <label asp-for="Name">Name</label>
         <input asp-for="Name" class="form-control" />
 
