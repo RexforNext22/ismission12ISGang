@@ -14,7 +14,7 @@
     <a asp-controller="Home" asp-action="Appointments" class="btn btn-primary">Cancel</a>
 
     <!--button to delete-->
-    <button type="submit">Delete</button>
+    <button asp-route-id="@ViewBag.singleTime.TimeID" type="submit">Delete</button>
 
     <!--Hide the movie id in the form-->
     <input type="hidden" asp-for="PersonID" />

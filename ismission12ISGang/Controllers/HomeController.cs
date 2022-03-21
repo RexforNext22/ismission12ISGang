@@ -143,25 +143,6 @@ namespace ismission12ISGang.Controllers
             DbContext.Update(Inst);
             DbContext.SaveChanges();
 
-
-            // Query the record of the person that was just added
-            var oSingleRecordPerson = DbContext.persons
-                    .Single(x => x.PersonID == Inst.PersonID);
-
-
-            // Query the record for the time slot
-            var oSingleRecord = DbContext.times
-                    .Single(x => x.TimeID == id);
-
-            // Set the person id of the time slot record to the same person id of the person just added
-            oSingleRecord.PersonID = oSingleRecordPerson.PersonID;
-
-            // Change the reservation status to true
-            oSingleRecord.bReserved = true;
-
-            // Save changes back to the database
-            DbContext.SaveChanges();
-
             return RedirectToAction("Appointments");
 
         }
@@ -171,15 +152,42 @@ namespace ismission12ISGang.Controllers
         public IActionResult Delete(int id)
         {
             var appointments = DbContext.persons.Single(x => x.PersonID == id);
+
+            // Set the page
+            ViewBag.singleTime = DbContext.times
+                .Single(x => x.PersonID == id);
+
             return View(appointments);
         }
 
         // Post method for the delete
         [HttpPost]
-        public IActionResult Delete(Person ar)
+        public IActionResult Delete(Person ar, int id)
         {
-            DbContext.persons.Remove(ar);
+
+            // Query the record of the person that was just added
+            //var oSingleRecordPerson = DbContext.persons
+            //        .Single(x => x.PersonID == ar.PersonID);
+
+
+            // Query the record for the time slot
+            var oSingleRecord = DbContext.times
+                    .Single(x => x.TimeID == id);
+
+            //// Set the person id of the time slot record to the same person id of the person just added
+            //oSingleRecord.PersonID = oSingleRecordPerson.PersonID;
+
+            // Change the reservation status to true
+            oSingleRecord.bReserved = false;
+            oSingleRecord.PersonID = null;
+
+
+            // Save changes back to the database
             DbContext.SaveChanges();
+
+            //DbContext.persons.Remove(ar);
+            //DbContext.SaveChanges();
+
 
             return RedirectToAction("Appointments");
         }
