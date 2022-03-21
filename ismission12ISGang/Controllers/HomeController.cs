@@ -70,7 +70,7 @@ namespace ismission12ISGang.Controllers
         {
             // Set the page
             ViewBag.singleTime = DbContext.times
-            .Single(x => x.TimeID == id);
+                .Single(x => x.TimeID == id);
 
 
             return View();
@@ -81,8 +81,8 @@ namespace ismission12ISGang.Controllers
         public IActionResult Form(Person p, int id)
         {
             // throw errors if invalid entries made
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
 
                 // Submit the new person to the database
                 DbContext.Add(p);
@@ -108,13 +108,13 @@ namespace ismission12ISGang.Controllers
 
 
                 // Return the user to the homepage per the assignment instructions
-                return View("Index", p);
-            }
-            else
-            {
-                // Return the same view if there is an error
-                return View(p);
-            }
+                return View("Index");
+            //}
+            //else
+            //{
+            //    // Return the same view if there is an error
+            //    return View();
+            //}
         }
 
 
@@ -125,24 +125,44 @@ namespace ismission12ISGang.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            ViewBag.persons = DbContext.persons.ToList();
+            ViewBag.singleTime = DbContext.times
+            .Single(x => x.PersonID == id);
 
             var application = DbContext.persons.Single(x => x.PersonID == id);
 
-            return RedirectToAction("Form", application);
+            return View(application);
         }
 
 
         // Post method for the edit
 
         [HttpPost]
-        public IActionResult Edit(Person Inst)
+        public IActionResult Edit(Person Inst, int id)
         {
 
             DbContext.Update(Inst);
             DbContext.SaveChanges();
 
-            return RedirectToAction("Form");
+
+            // Query the record of the person that was just added
+            var oSingleRecordPerson = DbContext.persons
+                    .Single(x => x.PersonID == Inst.PersonID);
+
+
+            // Query the record for the time slot
+            var oSingleRecord = DbContext.times
+                    .Single(x => x.TimeID == id);
+
+            // Set the person id of the time slot record to the same person id of the person just added
+            oSingleRecord.PersonID = oSingleRecordPerson.PersonID;
+
+            // Change the reservation status to true
+            oSingleRecord.bReserved = true;
+
+            // Save changes back to the database
+            DbContext.SaveChanges();
+
+            return RedirectToAction("Appointments");
 
         }
 
