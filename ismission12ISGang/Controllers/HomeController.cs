@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ismission12ISGang.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Globalization;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ismission12ISGang.Controllers
 {
@@ -36,6 +38,93 @@ namespace ismission12ISGang.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+            // Add the 3 months of dates to the database
+
+
+            System.DateTime checkdate = DateTime.Now.AddDays(91);
+
+            // Set the page
+            //var oSingleTime = DbContext.times
+            //    .Single(x => x.Day == checkdate.Day);
+
+            var oSingleTimeMax = DbContext.times.OrderByDescending(u => u.TimeID).FirstOrDefault();
+
+            // Convert the month name to an integer
+            static int GetMonthNumber_From_MonthName(string monthname)
+            {
+                int monthNumber = 0;
+                monthNumber = DateTime.ParseExact(monthname, "MMMM", CultureInfo.CurrentCulture).Month;
+                return monthNumber;
+            }
+
+            // Add a month's worth
+            int x = 1;
+
+            // Debugging
+            DateTime tomorrow = new DateTime(2022, 3, 23, 1, 0, 0);
+
+
+            if (oSingleTimeMax != null)
+            {
+                DateTime date2 = new DateTime(oSingleTimeMax.Year, GetMonthNumber_From_MonthName(oSingleTimeMax.Month), oSingleTimeMax.Day, 1, 0, 0);
+
+                if (DateTime.Compare(checkdate, date2) < 0) //change to checkdate
+                {
+                    x = 1000;
+                }
+                else
+                {
+                    x = 1000;
+                }
+
+            }
+
+
+
+            while (x <= 91)
+            {
+
+                int y = 8;
+
+                while (y < 21)
+                {
+                    //if (oSingleTime.Day == null)
+                    //{
+
+                    // if (oSingleTime.Month == null)
+
+                    // if (oSingleTime.Year == null)
+
+                    System.DateTime daysfromdate = DateTime.Now.AddDays(x);
+
+                    Time Time = new Time();
+
+
+                    Time.Month = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(daysfromdate.Month);
+                    Time.Day = daysfromdate.Day;
+                    Time.Year = daysfromdate.Year;
+
+
+                    if (y < 13)
+                    {
+                        Time.TimeOfDay = y.ToString() + ":00 a.m.";
+
+
+                    }
+                    else
+                    {
+
+                        Time.TimeOfDay = (y - 12).ToString() + ":00 p.m.";
+                    }
+
+                    DbContext.Add(Time);
+                    DbContext.SaveChanges();
+                    y = y + 1;
+                }
+                x = x + 1;
+            }
+
+
             return View();
         }
 
@@ -48,6 +137,7 @@ namespace ismission12ISGang.Controllers
                 .Include(x => x.Person)
                 .ToList();
 
+        
             // Return the list to the screen
             return View(lstDataList);
         }

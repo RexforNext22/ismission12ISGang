@@ -26,77 +26,77 @@ namespace ismission12ISGang.Models
         {
 
             // Seed the values for the Category table when we build the database
-            _ = mb.Entity<Time>().HasData(
+            //mb.Entity<Time>().HasData(
 
-                new Time
-                {
-                    TimeID = 1,
-                    Month = "March",
-                    Day = 12,
-                    Year = 2022,
-                    TimeOfDay = "8:00",
-                    PersonID = 1,
-                    bReserved = true
-
-
-                },
-                new Time
-                {
-                    TimeID = 2,
-                    Month = "March",
-                    Day = 12,
-                    Year = 2022,
-                    TimeOfDay = "8:30",
-                    bReserved = false
+                //new Time
+                //{
+                //    TimeID = 1,
+                //    Month = "March",
+                //    Day = 12,
+                //    Year = 2022,
+                //    TimeOfDay = "8:00",
+                //    PersonID = 1,
+                //    bReserved = true
 
 
-                },
-
-                new Time
-                {
-                    TimeID = 3,
-                    Month = "March",
-                    Day = 18,
-                    Year = 2022,
-                    TimeOfDay = "8:00",
-                    bReserved = false
-
-
-                },
-                new Time
-                {
-                    TimeID = 4,
-                    Month = "April",
-                    Day = 1,
-                    Year = 2022,
-                    TimeOfDay = "8:00",
-                    bReserved = false
+                //},
+                //new Time
+                //{
+                //    TimeID = 2,
+                //    Month = "March",
+                //    Day = 12,
+                //    Year = 2022,
+                //    TimeOfDay = "8:30",
+                //    bReserved = false
 
 
-                },
-                new Time
-                {
-                    TimeID = 5,
-                    Month = "April",
-                    Day = 1,
-                    Year = 2022,
-                    TimeOfDay = "8:30",
-                    bReserved = false
+                //},
+
+                //new Time
+                //{
+                //    TimeID = 3,
+                //    Month = "March",
+                //    Day = 18,
+                //    Year = 2022,
+                //    TimeOfDay = "8:00",
+                //    bReserved = false
 
 
-                },
-                new Time
-                {
-                    TimeID = 6,
-                    Month = "April",
-                    Day = 1,
-                    Year = 2022,
-                    TimeOfDay = "9:00",
-                    bReserved = false
+                //},
+                //new Time
+                //{
+                //    TimeID = 4,
+                //    Month = "April",
+                //    Day = 1,
+                //    Year = 2022,
+                //    TimeOfDay = "8:00",
+                //    bReserved = false
 
 
-                }
-                );
+                //},
+                //new Time
+                //{
+                //    TimeID = 5,
+                //    Month = "April",
+                //    Day = 1,
+                //    Year = 2022,
+                //    TimeOfDay = "8:30",
+                //    bReserved = false
+
+
+                //},
+                //new Time
+                //{
+                //    TimeID = 6,
+                //    Month = "April",
+                //    Day = 1,
+                //    Year = 2022,
+                //    TimeOfDay = "9:00",
+                //    bReserved = false
+
+
+                //}
+                //);
             mb.Entity<Person>().HasData(
 
                 new Person

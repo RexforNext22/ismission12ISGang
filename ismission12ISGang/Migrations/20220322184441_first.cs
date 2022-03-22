@@ -51,36 +51,6 @@ namespace ismission12ISGang.Migrations
                 columns: new[] { "PersonID", "Email", "Name", "Phone", "Size" },
                 values: new object[] { 1, "test@test.com", "Jacob Poor", "800 867 5309", 4 });
 
-            migrationBuilder.InsertData(
-                table: "times",
-                columns: new[] { "TimeID", "Day", "Month", "PersonID", "TimeOfDay", "Year", "bReserved" },
-                values: new object[] { 2, 12, "March", null, "8:30", 2022, false });
-
-            migrationBuilder.InsertData(
-                table: "times",
-                columns: new[] { "TimeID", "Day", "Month", "PersonID", "TimeOfDay", "Year", "bReserved" },
-                values: new object[] { 3, 18, "March", null, "8:00", 2022, false });
-
-            migrationBuilder.InsertData(
-                table: "times",
-                columns: new[] { "TimeID", "Day", "Month", "PersonID", "TimeOfDay", "Year", "bReserved" },
-                values: new object[] { 4, 1, "April", null, "8:00", 2022, false });
-
-            migrationBuilder.InsertData(
-                table: "times",
-                columns: new[] { "TimeID", "Day", "Month", "PersonID", "TimeOfDay", "Year", "bReserved" },
-                values: new object[] { 5, 1, "April", null, "8:30", 2022, false });
-
-            migrationBuilder.InsertData(
-                table: "times",
-                columns: new[] { "TimeID", "Day", "Month", "PersonID", "TimeOfDay", "Year", "bReserved" },
-                values: new object[] { 6, 1, "April", null, "9:00", 2022, false });
-
-            migrationBuilder.InsertData(
-                table: "times",
-                columns: new[] { "TimeID", "Day", "Month", "PersonID", "TimeOfDay", "Year", "bReserved" },
-                values: new object[] { 1, 12, "March", 1, "8:00", 2022, true });
-
             migrationBuilder.CreateIndex(
                 name: "IX_times_PersonID",
                 table: "times",

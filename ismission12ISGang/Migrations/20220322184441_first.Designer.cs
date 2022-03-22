@@ -9,7 +9,7 @@ using ismission12ISGang.Models;
 namespace ismission12ISGang.Migrations
 {
     [DbContext(typeof(TimeContext))]
-    [Migration("20220321214516_first")]
+    [Migration("20220322184441_first")]
     partial class first
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -84,63 +84,6 @@ namespace ismission12ISGang.Migrations
                     b.HasIndex("PersonID");
 
                     b.ToTable("times");
-
-                    b.HasData(
-                        new
-                        {
-                            TimeID = 1,
-                            Day = 12,
-                            Month = "March",
-                            PersonID = 1,
-                            TimeOfDay = "8:00",
-                            Year = 2022,
-                            bReserved = true
-                        },
-                        new
-                        {
-                            TimeID = 2,
-                            Day = 12,
-                            Month = "March",
-                            TimeOfDay = "8:30",
-                            Year = 2022,
-                            bReserved = false
-                        },
-                        new
-                        {
-                            TimeID = 3,
-                            Day = 18,
-                            Month = "March",
-                            TimeOfDay = "8:00",
-                            Year = 2022,
-                            bReserved = false
-                        },
-                        new
-                        {
-                            TimeID = 4,
-                            Day = 1,
-                            Month = "April",
-                            TimeOfDay = "8:00",
-                            Year = 2022,
-                            bReserved = false
-                        },
-                        new
-                        {
-                            TimeID = 5,
-                            Day = 1,
-                            Month = "April",
-                            TimeOfDay = "8:30",
-                            Year = 2022,
-                            bReserved = false
-                        },
-                        new
-                        {
-                            TimeID = 6,
-                            Day = 1,
-                            Month = "April",
-                            TimeOfDay = "9:00",
-                            Year = 2022,
-                            bReserved = false
-                        });
                 });
 
             modelBuilder.Entity("ismission12ISGang.Models.Time", b =>
